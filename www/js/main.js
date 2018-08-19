@@ -5796,7 +5796,11 @@ function changeStatus( seconds, color, line, onclick ) {
 		html += _( "Current" ) + ": " + controller.settings.curr + " mA ";
     }
 
-    if ( isControllerConnected() && controller.options.urs === 2 && typeof controller.settings.flcrt !== "undefined" && typeof controller.settings.flwrt !== "undefined" ) {
+    if ( isControllerConnected() && typeof controller.settings.ms !== "undefined" ) {
+		html += "<span style='padding-left:5px'>" + _( "Moisture" ) + ": " + controller.settings.ms + " counts</span>";
+    }
+	
+   if ( isControllerConnected() && controller.options.urs === 2 && typeof controller.settings.flcrt !== "undefined" && typeof controller.settings.flwrt !== "undefined" ) {
 		html += "<span style='padding-left:5px'>" + _( "Flow" ) + ": " + ( flowCountToVolume( controller.settings.flcrt ) / ( controller.settings.flwrt / 60 ) ).toFixed( 2 ) + " L/min</span>";
     }
 
